@@ -1,0 +1,58 @@
+<p>register works!</p>
+<form [formGroup]="fg" (ngSubmit)="onSubmit()">
+    <div>
+        <input type="text" formControlName="username">
+        <span class="txt-error" *ngIf="fg.get('username')?.touched && fg.get('username')?.errors?.['required']">
+            Champs requis
+        </span>
+        <span class="txt-error"
+            *ngIf="fg.get('username')?.touched && fg.get('username')?.errors?.['minlength'] || fg.get('username')?.errors?.['maxlength'] ">
+            Le nom doit faire au moins 5 et maximum 50 caractères
+        </span>
+    </div>
+    <div>
+        <input type="email" formControlName="email">
+        <span class="txt-error" *ngIf="fg.get('email')?.touched && fg.get('email')?.errors?.['required']">
+            Champs requis
+        </span>
+        <span class="txt-error"
+            *ngIf="fg.get('email')?.touched && fg.get('email')?.errors?.['minlength'] || fg.get('email')?.errors?.['maxlength'] ">
+            L'email doit faire au moins 10 et maximum 100 caractères
+        </span>
+    </div>
+    <div>
+        <input type="password" formControlName="password">
+        <span class="txt-error" *ngIf="fg.get('password')?.touched && fg.get('password')?.errors?.['required']">
+            Champs requis
+        </span>
+        <span class="txt-error"
+            *ngIf="fg.get('password')?.touched && fg.get('password')?.errors?.['minlength'] || fg.get('password')?.errors?.['maxlength'] ">
+            Le mot de passe doit faire au moins 6 et maximum 50 caractères
+        </span>
+    </div>
+    <div>
+        <input type="password" formControlName="confirmPassword">
+        <span class="txt-error"
+            *ngIf="fg.get('confirmPassword')?.touched && fg.get('confirmPassword')?.errors?.['required']">
+            Champs requis
+        </span>
+        <span class="txt-error"
+            *ngIf="fg.get('confirmPassword')?.touched && fg.get('confirmPassword')?.errors?.['minlength'] || fg.get('confirmPassword')?.errors?.['maxlength'] ">
+            Le mot de passe doit faire au moins 6 et maximum 50 caractères
+        </span>
+    </div>
+    <div>
+        <input type="date" formControlName="birthdate">
+    </div>
+    <div>
+        <select formControlName="gender">
+            <option *ngFor="let gender of GenderEnum | enumToArray" [ngValue]="gender | uppercase">{{ gender }}</option>
+        </select>
+        <span class="txt-error" *ngIf="fg.get('gender')?.touched && fg.get('gender')?.errors?.['required']">
+            Champs requis
+        </span>
+    </div>
+    <div>
+        <input type="submit" value="OK">
+    </div>
+</form>

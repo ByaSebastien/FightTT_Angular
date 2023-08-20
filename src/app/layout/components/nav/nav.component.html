@@ -1,0 +1,20 @@
+<nav>
+    <ul>
+        <li *ngFor="let link of links; let i = index">
+            <a [ngClass]="{active: link.isVisible}" (click)="toggleLink(i)" [routerLink]="link.url">{{link.title}}</a>
+            <ul *ngIf="link.isVisible">
+                <li *ngFor="let child of link.children">
+                    <a [routerLink]="child.url">{{child.title}}</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <div *ngIf="!connectedUser">
+        <a routerLink="/auth/login"><button>Se connecter</button></a>
+        <a routerLink="/auth/register"><button>S'inscrire</button></a>
+    </div>
+    <div *ngIf="connectedUser">
+        <div>Bonjour {{connectedUser.username}}</div>
+        <button (click)="logout()">Se deconnecter</button>
+    </div>
+</nav>

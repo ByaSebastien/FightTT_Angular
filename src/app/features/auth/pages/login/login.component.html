@@ -1,0 +1,26 @@
+<p>login works!</p>
+<form [formGroup]="fg" (ngSubmit)="onSubmit()">
+    <div>
+        <input type="email" formControlName="email">
+        <span class="txt-error" *ngIf="fg.get('email')?.touched && fg.get('email')?.errors?.['required']">
+            Champs requis
+        </span>
+        <span class="txt-error"
+            *ngIf="fg.get('email')?.touched && fg.get('email')?.errors?.['minlength'] || fg.get('email')?.errors?.['maxlength'] ">
+            L'email doit faire au moins 10 et maximum 100 caractères
+        </span>
+    </div>
+    <div>
+        <input type="password" formControlName="password">
+        <span class="txt-error" *ngIf="fg.get('password')?.touched && fg.get('password')?.errors?.['required']">
+            Champs requis
+        </span>
+        <span class="txt-error"
+            *ngIf="fg.get('password')?.touched && fg.get('password')?.errors?.['minlength'] || fg.get('password')?.errors?.['maxlength'] ">
+            Le mot de passe doit faire au moins 6 et maximum 50 caractères
+        </span>
+    </div>
+    <div>
+        <input type="submit" value="OK">
+    </div>
+</form>
