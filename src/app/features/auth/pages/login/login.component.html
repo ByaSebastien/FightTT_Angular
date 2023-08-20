@@ -1,7 +1,7 @@
 <p>login works!</p>
 <form [formGroup]="fg" (ngSubmit)="onSubmit()">
     <div>
-        <input type="email" formControlName="email">
+        <input type="email" formControlName="email" placeholder="email">
         <span class="txt-error" *ngIf="fg.get('email')?.touched && fg.get('email')?.errors?.['required']">
             Champs requis
         </span>
@@ -11,7 +11,7 @@
         </span>
     </div>
     <div>
-        <input type="password" formControlName="password">
+        <input type="password" formControlName="password" placeholder="password">
         <span class="txt-error" *ngIf="fg.get('password')?.touched && fg.get('password')?.errors?.['required']">
             Champs requis
         </span>

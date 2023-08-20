@@ -9,12 +9,12 @@
             </ul>
         </li>
     </ul>
-    <div *ngIf="!connectedUser">
+    <div *ngIf="!logged">
         <a routerLink="/auth/login"><button>Se connecter</button></a>
         <a routerLink="/auth/register"><button>S'inscrire</button></a>
     </div>
-    <div *ngIf="connectedUser">
-        <div>Bonjour {{connectedUser.username}}</div>
+    <div *ngIf="logged">
+        <div>{{connectedUser?.username}}</div>
         <button (click)="logout()">Se deconnecter</button>
     </div>
 </nav>
